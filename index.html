@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebNav Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header>
+    <h1>WebNav Hub</h1>
+    <div class="search-container">
+      <i class="fa-solid fa-search search-icon"></i>
+      <input type="text" id="searchInput" placeholder="搜索您需要的网站...">
+    </div>
+  </header>
+  <nav>
+    <ul id="navList">
+      <!-- 导航链接将通过JavaScript动态生成 -->
+    </ul>
+  </nav>
+  <main>
+    <div id="categoriesContainer">
+      <!-- 分类内容将通过JavaScript动态生成 -->
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 WebNav Hub. 让网络导航变得更简单。</p>
+    <nav class="footer-nav">
+      <a href="#">关于</a>
+      <a href="#">联系</a>
+      <a href="#">隐私政策</a>
+    </nav>
+  </footer>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
