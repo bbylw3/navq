@@ -1,4 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // 页面加载完成后隐藏加载动画
+  const loadingOverlay = document.querySelector('.loading-overlay');
+  if (loadingOverlay) {
+    // 添加一个最小加载时间，确保动画可见
+    setTimeout(() => {
+      loadingOverlay.classList.add('hidden');
+    }, 800);
+  }
+
   // 动态生成导航链接
   const navList = document.getElementById('navList');
   navData.forEach(category => {
@@ -6,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const a = document.createElement('a');
     a.href = `#${category.id}`;
     a.textContent = category.name;
+    a.setAttribute('data-category', category.id);
     li.appendChild(a);
     navList.appendChild(li);
   });
@@ -23,16 +33,21 @@ document.addEventListener("DOMContentLoaded", function () {
       const linkGrid = document.createElement('section');
       linkGrid.className = 'link-grid';
       
-      linkData[categoryId].forEach(link => {
+      linkData[categoryId].forEach((link, index) => {
         const linkCard = document.createElement('div');
         linkCard.className = 'link-card';
+        
+        // 添加延迟动画效果
+        linkCard.style.animationDelay = `${index * 0.05}s`;
         
         const anchor = document.createElement('a');
         anchor.href = link.url;
         anchor.target = '_blank';
+        anchor.setAttribute('aria-label', link.name);
         
         const icon = document.createElement('i');
         icon.className = link.icon;
+        icon.setAttribute('aria-hidden', 'true');
         
         const title = document.createElement('h3');
         title.textContent = link.name;
@@ -166,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const noResults = document.createElement('div');
     noResults.className = 'no-results';
     noResults.id = 'noResultsMessage';
-    noResults.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i><p>没有找到匹配的网站</p>';
+    noResults.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i><p>没有找到匹配的网站</p><p>请尝试其他关键词</p>';
     categoriesContainer.appendChild(noResults);
   }
   
@@ -183,6 +198,20 @@ document.addEventListener("DOMContentLoaded", function () {
     if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
       e.preventDefault();
       searchInput.focus();
+      searchInput.select(); // 选中所有文本
+    }
+    
+    // ESC键清除搜索
+    if (e.key === 'Escape' && document.activeElement === searchInput) {
+      searchInput.value = '';
+      searchInput.blur();
+      // 触发input事件以清除搜索结果
+      searchInput.dispatchEvent(new Event('input'));
     }
   });
+  
+  // 添加页面加载动画
+  setTimeout(() => {
+    document.body.classList.add('loaded');
+  }, 100);
 });

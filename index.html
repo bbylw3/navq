@@ -4,20 +4,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebNav Hub</title>
+  <meta name="description" content="WebNav Hub - 现代化网站导航页面，提供AI搜索、社交媒体、实用工具、科技资讯、云存储和电子邮箱等常用网站的快速访问。">
+  <meta name="keywords" content="网站导航, AI搜索, 社交媒体, 实用工具, 科技资讯, 云存储, 电子邮箱">
+  <meta name="author" content="WebNav Hub">
+  <title>WebNav Hub - 现代化网站导航页面</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>">
 </head>
 
 <body>
+  <div class="loading-overlay">
+    <div class="spinner"></div>
+  </div>
+  
   <header>
     <h1>WebNav Hub</h1>
     <div class="search-container">
       <i class="fa-solid fa-search search-icon"></i>
-      <input type="text" id="searchInput" placeholder="搜索您需要的网站...">
+      <input type="text" id="searchInput" placeholder="搜索您需要的网站... (Ctrl+K)" aria-label="搜索网站">
     </div>
   </header>
-  <nav>
+  <nav aria-label="主导航">
     <ul id="navList">
       <!-- 导航链接将通过JavaScript动态生成 -->
     </ul>
@@ -28,11 +36,11 @@
     </div>
   </main>
   <footer>
-    <p>&copy; 2025 WebNav Hub. 让网络导航变得更简单。</p>
-    <nav class="footer-nav">
-      <a href="#">关于</a>
-      <a href="#">联系</a>
+    <p>&copy; 2023 WebNav Hub. 保留所有权利。</p>
+    <nav class="footer-nav" aria-label="底部导航">
       <a href="#">隐私政策</a>
+      <a href="#">使用条款</a>
+      <a href="#">联系我们</a>
     </nav>
   </footer>
   <script src="data.js"></script>
